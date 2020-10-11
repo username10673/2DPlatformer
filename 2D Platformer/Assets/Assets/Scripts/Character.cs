@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class Character : Unit
 {
-    [SerializeField]
     private int lives = 5;
 
     public int Lives
@@ -21,10 +20,8 @@ public class Character : Unit
     }
     private LivesBar livesBar;
     public float normalSpeed;
-    [SerializeField]
     private float speed = 3.0F;
-    [SerializeField]
-    private float jumpForce = 15.0F;
+   private float jumpForce = 15.0F;
 
     private bool isGrounded = false;
 
@@ -76,7 +73,11 @@ public class Character : Unit
 
     public void Jump()
     {
-        rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        if (isGrounded)
+        {
+            rigidbody.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        }
+            
     }
 
     public void Shoot()
