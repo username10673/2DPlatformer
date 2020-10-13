@@ -16,6 +16,11 @@ public class Character : Unit
                 lives = value;
                 livesBar.Refresh();
             }
+            if (value < 1)
+            {
+                Destroy(gameObject);
+                SceneManager.LoadScene(3);
+            }
         }
     }
     private LivesBar livesBar;
@@ -120,6 +125,11 @@ public class Character : Unit
         {
             Collect.TheCoin += 1;
             Destroy(collider.gameObject);
+        }
+        if (collider.tag == "KillZone")
+        {
+            Destroy(collider.gameObject);
+            SceneManager.LoadScene(3);
         }
     }
 
