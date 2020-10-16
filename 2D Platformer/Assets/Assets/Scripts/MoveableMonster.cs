@@ -45,5 +45,7 @@ public class MoveableMonster : Monster
         if (colliders.Length > 0 && colliders.All(x => !x.GetComponent<Character>())) direction *= -1.0F;
         
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.deltaTime);
+
+        sprite.flipX = direction.x > 0.0F;
     }
 }

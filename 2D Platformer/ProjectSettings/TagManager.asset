@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - KillZone
+  - Chest
   layers:
   - Default
   - TransparentFX

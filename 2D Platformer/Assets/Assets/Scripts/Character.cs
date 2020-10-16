@@ -11,7 +11,7 @@ public class Character : Unit
         get { return lives; }
         set
         {
-            if (value < 5)
+            if (value <= 5)
             {
                 lives = value;
                 livesBar.Refresh();
@@ -19,6 +19,7 @@ public class Character : Unit
             if (value < 1)
             {
                 Destroy(gameObject);
+                Collect.TheCoin = 0;
                 SceneManager.LoadScene(3);
             }
         }
@@ -129,7 +130,16 @@ public class Character : Unit
         if (collider.tag == "KillZone")
         {
             Destroy(collider.gameObject);
+            Collect.TheCoin = 0;
             SceneManager.LoadScene(3);
+
+        }
+
+        if (collider.tag == "Chest")
+        {
+            Destroy(collider.gameObject);
+            Collect.TheCoin = 0;
+            SceneManager.LoadScene(0);
         }
     }
 
